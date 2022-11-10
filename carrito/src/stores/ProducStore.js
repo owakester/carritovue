@@ -1,9 +1,10 @@
 import { defineStore } from "pinia";
-import { ref, computed } from "vue";
+import { ref, computed, onBeforeMount, onMounted } from "vue";
 export const useProductStore = defineStore("product", () => {
   const count = ref(0);
   const info = ref(null);
   const carrito = ref([]);
+  const filtro = ref(null);
   const doubleCount = computed(() => count.value * 2);
 
   function countProduct() {
@@ -17,7 +18,7 @@ export const useProductStore = defineStore("product", () => {
 
       await fetch(url)
         .then((response) => response.json())
-        .then((data) => (info.value = data.data));
+        .then((data) => showInfo(data));
       /* info.value=info.value.filter(item=>item.precio===1000)
        */
     } catch (error) {
@@ -25,16 +26,45 @@ export const useProductStore = defineStore("product", () => {
     }
   };
 
-  getProducts();
+  const showInfo=(data)=>{
+    info.value = data.data
+    filtro.value=info.value
+  }
 
-  const addProduct = (select) => {
-    carrito.value.push(select)
-    carrito.value.forEach(element => {
+  onMounted(() => {
+    getProducts();
+    
+  });
 
-});
 
-    console.log(carrito.value);
+  
+  const addProduct = (prod, posicion) => {
+    const existe = carrito.value.some((item) => item.id === prod.id);
+    console.log(existe);
+
+    if (!existe) {
+      console.log("No existe");
+      carrito.value.push(prod);
+    } else {
+      carrito.value.forEach((element) => {
+        console.log(element);
+        element.cantidad++;
+      });
+    }
   };
 
-  return { count, doubleCount, countProduct, info, addProduct };
+  const filterProduct = (categoria) => {
+    filtro.value = info.value.filter((item) => item.categoria === categoria);
+  };
+
+  return {
+    count,
+    doubleCount,
+    countProduct,
+    info,
+    addProduct,
+    carrito,
+    filterProduct,
+    filtro,
+  };
 });

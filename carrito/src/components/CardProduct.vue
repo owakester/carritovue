@@ -1,6 +1,14 @@
 <template>
+  <div>
+ 
+  <span v-for="categoria in categorias" @click="store.filterProduct(categoria)" class="bg-gray-200 cursor-pointer mx-2 hover:bg-orange-500 rounded-t-lg text-xl  p-2">
+{{categoria}}
+  </span>
+
+  
   <div class="grid grid-cols-3">
-    <div class="" v-for="product in store.info" :key="product.id">
+    
+    <div class="" v-for="(product, index) in store.filtro" :key="product.id">
       <div
         class="w-full max-w-sm bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700"
       >
@@ -89,7 +97,10 @@
             <span class="text-3xl font-bold text-gray-900 dark:text-white"
               >$ {{ product.precio }}</span
             >
-            <button @click="store.addProduct(product)"
+
+
+            
+            <button @click="store.addProduct(product,index)"
               class="text-white bg-orange-500 hover:bg-orange-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
               Add to cart
@@ -99,13 +110,14 @@
       </div>
     </div>
   </div>
+</div>
 </template>
 
 <script setup>
 import { useProductStore } from "../stores/ProducStore";
 
 const store = useProductStore();
-
+const categorias=['bebidas','pizzas','postres','todos']
 console.log(store.count);
 </script>
 
