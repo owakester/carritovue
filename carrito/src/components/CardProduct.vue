@@ -1,69 +1,68 @@
 <template>
-  <div>
- 
-  <span v-for="categoria in categorias" @click="store.filterProduct(categoria)" class="bg-gray-200 cursor-pointer mx-2 hover:bg-orange-500 rounded-t-lg text-xl  p-2">
-{{categoria}}
-  </span>
+  <div class="container mx-auto ">
+    <span
+      v-for="categoria in categorias"
+      @click="store.filterProduct(categoria)"
+      class="bg-gray-200 cursor-pointer mx-2 hover:bg-orange-500 rounded-t-lg text-xl p-2"
+      :key="categoria.id"
+    >
+      {{ categoria }}
+    </span>
+   
 
-  
-  <div class="grid grid-cols-3">
-    
-    <div class="" v-for="(product, index) in store.filtro" :key="product.id">
-      <div
-        class="w-full max-w-sm bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700"
-      >
-        <a href="#">
-          <img
-            class=" pt-4 rounded rounded-t-lg"
-            :src="product.url"
-            alt="product image"
-          />
-        </a>
-        <div class="px-5 py-5 my-4">
+    <div class="grid sm:grid-cols-1 md:grid-cols-3">
+      <div class="" v-for="(product, index) in store.filtro" :key="product.id">
+        <div
+          class="w-full max-w-sm bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700"
+        >
           <a href="#">
-            <h5
-              class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white"
-            >
-              {{ product.producto }}
-            </h5>
+            <img
+              class="pt-4 rounded rounded-t-lg"
+              :src="product.url"
+              alt="product image"
+            />
           </a>
-          <div v-if="estado" class="flex items-center mt-2.5 mb-5">
-           {{product.descripcion}}
-          </div>
-          <div class="flex justify-between items-center">
-            <span class="text-3xl font-bold text-gray-900 dark:text-white"
-              >$ {{ product.precio }}</span
-            >
+          <div class="px-5 py-5 my-4">
+            <a href="#">
+              <h5
+                class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white"
+              >
+                {{ product.producto }}
+              </h5>
+            </a>
+            <div v-if="estado" class="flex items-center mt-2.5 mb-5">
+              {{ product.descripcion }}
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-3xl font-bold text-gray-900 dark:text-white"
+                >$ {{ product.precio }}</span
+              >
 
+              <button
+                @click="store.addProduct(product, index)"
+                class="text-white bg-orange-500 hover:bg-orange-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                Agregar
+              </button>
 
-            
-            <button @click="store.addProduct(product,index)"
-              class="text-white bg-orange-500 hover:bg-orange-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            >
-              Agregar
-            </button>
-
-<!--             <button @click="descripcion(product)">Descripcion</button> -->
+              <!--             <button @click="descripcion(product)">Descripcion</button> -->
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 </template>
 
 <script setup>
 import { useProductStore } from "../stores/ProducStore";
-import {ref} from 'vue'
-const estado=ref(false)
-const descripcion=()=>{
-
-  return   estado.value=true
-
-
-}
+import { ref } from "vue";
+const estado = ref(false);
+const descripcion = () => {
+  return (estado.value = true);
+};
 const store = useProductStore();
-const categorias=['bebidas','pizzas','postres']
+const categorias = ["bebidas", "pizzas", "postres"];
 console.log(store.count);
 </script>
 
