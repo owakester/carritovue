@@ -5,6 +5,7 @@ export const useProductStore = defineStore("product", () => {
   const info = ref(null);
   const carrito = ref([]);
   const filtro = ref(null);
+  const stateLoad = ref(true);
   const doubleCount = computed(() => count.value * 2);
 
   function countProduct() {
@@ -26,18 +27,18 @@ export const useProductStore = defineStore("product", () => {
     }
   };
 
-  const showInfo=(data)=>{
-    info.value = data.data
-    filtro.value=info.value
-  }
+  const showInfo = (data) => {
+    stateLoad.value = true;
+    console.log(stateLoad.value);
+    info.value = data.data;
+    filtro.value = info.value;
+    stateLoad.value = false;
+  };
 
   onMounted(() => {
     getProducts();
-    
   });
 
-
-  
   const addProduct = (prod, posicion) => {
     const existe = carrito.value.some((item) => item.id === prod.id);
     console.log(existe);
@@ -46,9 +47,9 @@ export const useProductStore = defineStore("product", () => {
       console.log("No existe");
       carrito.value.push(prod);
     } else {
-      carrito.value.forEach((element) => {
-        console.log(element);
-        element.cantidad++;
+      carrito.value.forEach((element,index) => {
+        console.log(element,index);
+       carrito.value[index].cantidad++
       });
     }
   };
@@ -66,5 +67,6 @@ export const useProductStore = defineStore("product", () => {
     carrito,
     filterProduct,
     filtro,
+    stateLoad,
   };
 });
