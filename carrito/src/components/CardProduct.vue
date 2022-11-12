@@ -11,7 +11,7 @@
       {{ categoria }}
     </span>
   </div>
-
+iuoiuoi
     <div class="  mt-12 grid sm:grid-cols-1 md:grid-cols-3">
       <div class="" v-for="(product, index) in store.filtro" :key="product.id">
         <div
