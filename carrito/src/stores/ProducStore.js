@@ -44,14 +44,11 @@ export const useProductStore = defineStore("product", () => {
     if (!existe) {
       carrito.value.push(prod);
     } else {
-    
-      const actualizarcantidad= carrito.value.map(item=>{
-        if (item.id===prod.id) {
-          item.cantidad++
+      const actualizarcantidad = carrito.value.map((item) => {
+        if (item.id === prod.id) {
+          item.cantidad++;
         }
-      })
-
-
+      });
     }
   };
 
