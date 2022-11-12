@@ -29,7 +29,6 @@ export const useProductStore = defineStore("product", () => {
 
   const showInfo = (data) => {
     stateLoad.value = true;
-    console.log(stateLoad.value);
     info.value = data.data;
     filtro.value = info.value;
     stateLoad.value = false;
@@ -41,16 +40,18 @@ export const useProductStore = defineStore("product", () => {
 
   const addProduct = (prod, posicion) => {
     const existe = carrito.value.some((item) => item.id === prod.id);
-    console.log(existe);
 
     if (!existe) {
-      console.log("No existe");
       carrito.value.push(prod);
     } else {
-      carrito.value.forEach((element,index) => {
-        console.log(element,index);
-       carrito.value[index].cantidad++
-      });
+    
+      const actualizarcantidad= carrito.value.map(item=>{
+        if (item.id===prod.id) {
+          item.cantidad++
+        }
+      })
+
+
     }
   };
 

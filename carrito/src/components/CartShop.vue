@@ -84,7 +84,6 @@
 import {useProductStore} from '../stores/ProducStore'
 
 const store = useProductStore();
-console.log(store.carrito)
 </script>
 
 <style lang="scss" scoped></style>
