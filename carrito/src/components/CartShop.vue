@@ -34,7 +34,7 @@
           <tr v-for="product in store.carrito">
             <td class="hidden pb-4 md:table-cell">
               <a href="#">
-                <img class="h-48" :src="product.url">
+                <img class="h-48 w-48" :src="product.url">
               </a>
             </td>
             <td>

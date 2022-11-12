@@ -1,5 +1,5 @@
 <template>
-    <div class=" p-8 md:mx-12 container mx-auto">
+    <div class=" bg-gray-900   ">
 
 
 <CardProduct></CardProduct>

@@ -1,23 +1,25 @@
 <template>
   <div class="container mx-auto ">
+   
+   <div class="bg-gray-200 rounded  flex justify-center ...">
     <span
       v-for="categoria in categorias"
       @click="store.filterProduct(categoria)"
-      class="bg-gray-200 cursor-pointer mx-2 hover:bg-orange-500 rounded-t-lg text-xl p-2"
+      class=" cursor-pointer  hover:bg-orange-500   text-xl p-2"
       :key="categoria.id"
     >
       {{ categoria }}
     </span>
-   
+  </div>
 
-    <div class="grid sm:grid-cols-1 md:grid-cols-3">
+    <div class="  mt-12 grid sm:grid-cols-1 md:grid-cols-3">
       <div class="" v-for="(product, index) in store.filtro" :key="product.id">
         <div
-          class="w-full max-w-sm bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700"
+          class="w-full max-w-sm bg-white rounded-lg shadow-md dark:bg-gray-900 dark:border-gray-900"
         >
           <a href="#">
             <img
-              class="pt-4 rounded rounded-t-lg"
+              class="pt-4  rounded rounded-t-lg"
               :src="product.url"
               alt="product image"
             />
@@ -62,8 +64,11 @@ const descripcion = () => {
   return (estado.value = true);
 };
 const store = useProductStore();
-const categorias = ["bebidas", "pizzas", "postres"];
+const categorias = ["🍹bebidas", "🍕pizzas", "🍝postres","🥟empanadas"];
 console.log(store.count);
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+
+
+</style>
