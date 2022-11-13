@@ -66,5 +66,6 @@ export const useProductStore = defineStore("product", () => {
     filterProduct,
     filtro,
     stateLoad,
+   
   };
 });

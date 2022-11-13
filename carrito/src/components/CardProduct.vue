@@ -38,14 +38,20 @@
             <div class="flex justify-between items-center">
               <span class="text-3xl font-bold text-gray-900 dark:text-white"
                 >$ {{ product.precio }}</span
-              >
+>
 
+<span><button @click="product.cantidad++" class="bg-gray-200 text-gray-600 px-2 py-1 text-center text-md rounded-full">+</button></span>
+<span><input :disabled="product.cantidad===0" v-model="product.cantidad" class=" w-8" type="number"></span>
+<span><button @click="product.cantidad--"  class="bg-gray-200 text-gray-600 px-2.5 py-1 text-center text-md rounded-full">-</button></span>
               <button
                 @click="store.addProduct(product, index)"
                 class="text-white bg-orange-500 hover:bg-orange-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
               >
                 Agregar
               </button>
+
+
+
 
               <!--             <button @click="descripcion(product)">Descripcion</button> -->
             </div>

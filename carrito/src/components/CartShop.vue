@@ -50,7 +50,7 @@
             <td class="justify-center md:justify-end md:flex mt-6">
               <div class="w-14 h-10">
                 <div class="relative flex flex-row w-full h-8">
-                <input v-model="product.cantidad" type="number"  
+                <input :disabled="product.cantidad<=0"  v-model="product.cantidad" type="number"  
                   class="w-full rounded  font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black" />
                 </div>
               </div>
@@ -62,7 +62,7 @@
             </td>
             <td class="text-right">
               <span class="text-sm lg:text-base font-medium">
-                20.00€
+                40.00€
               </span>
             </td>
           </tr> 
@@ -81,9 +81,13 @@
 </template>
 
 <script setup>
+import { ref, computed } from 'vue';
 import {useProductStore} from '../stores/ProducStore'
 
 const store = useProductStore();
+
+
+
 </script>
 
 <style lang="scss" scoped></style>
