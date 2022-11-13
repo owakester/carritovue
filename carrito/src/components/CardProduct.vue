@@ -41,7 +41,7 @@
 >
 
 <span><button @click="product.cantidad++" class="bg-gray-200 text-gray-600 px-2 py-1 text-center text-md rounded-full">+</button></span>
-<span><input :disabled="product.cantidad===0" v-model="product.cantidad" class=" w-8" type="number"></span>
+<span><input :disabled="product.cantidad===0" v-model="product.cantidad" class=" w-8" type="text"></span>
 <span><button @click="product.cantidad--"  class="bg-gray-200 text-gray-600 px-2.5 py-1 text-center text-md rounded-full">-</button></span>
               <button
                 @click="store.addProduct(product, index)"
