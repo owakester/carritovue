@@ -31,7 +31,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="product in store.carrito">
+          <tr v-for="product in store.carrito" :key="product.id">
             <td class="hidden pb-4 md:table-cell">
               <a href="#">
                 <img class="h-48 w-48" :src="product.url">
@@ -59,17 +59,18 @@
               <span class="text-sm lg:text-base font-medium">
                {{product.precio}}
               </span>
-            </td>
+            </td> 
             <td class="text-right">
               <span class="text-sm lg:text-base font-medium">
-                40.00€
+              {{totalUnidad=product.precio * product.cantidad}}
               </span>
+              
             </td>
           </tr> 
          
         </tbody>
       </table>
-
+      <p>gh{{store.addTotal}}</p>
 
 
       <hr class="pb-6 mt-6">
@@ -83,7 +84,7 @@
 <script setup>
 import { ref, computed } from 'vue';
 import {useProductStore} from '../stores/ProducStore'
-
+const totalUnidad=ref(0)
 const store = useProductStore();
 
 

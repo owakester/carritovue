@@ -3,7 +3,7 @@
 
         <nav class="bg-gray-900 border-gray-200 px-2 sm:px-4 py-2.5  dark:bg-gray-900">
   <div class="container flex flex-wrap justify-between items-center mx-auto">
-    <a href="https://flowbite.com/" class="flex items-center">
+    <a href="" class="flex items-center">
         <img src="../assets/logo.jpg" class="rounded-full mr-3 h-12 sm:h-20" alt="Flowbite Logo">
         <span class="self-center text-xl text-gray-200 font-semibold whitespace-nowrap dark:text-white">Pizza Remolo</span>
     </a>
