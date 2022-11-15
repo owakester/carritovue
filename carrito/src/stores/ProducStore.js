@@ -6,7 +6,8 @@ export const useProductStore = defineStore("product", () => {
   const carrito = ref([]);
   const filtro = ref(null);
   const stateLoad = ref(true);
-  const doubleCount = computed(() => count.value * 2);
+  const activeModal=ref(false)
+  const activeProduct=ref(true)
   const sumar = ref(null);
 
   const getProducts = async () => {
@@ -41,6 +42,7 @@ export const useProductStore = defineStore("product", () => {
   });
 
   const addProduct = (prod, posicion) => {
+    activeModal.value=true
     const existe = carrito.value.some((item) => item.id === prod.id);
 
     if (!existe) {
@@ -61,7 +63,7 @@ export const useProductStore = defineStore("product", () => {
 
   return {
     count,
-    doubleCount,
+   
 
     info,
     addProduct,
@@ -71,5 +73,7 @@ export const useProductStore = defineStore("product", () => {
     stateLoad,
     addTotal,
     sumar,
+    activeModal,
+    activeProduct,
   };
 });

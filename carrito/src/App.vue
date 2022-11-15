@@ -10,6 +10,7 @@
 <script setup>
 import ContainerProducts from './components/ContainerProducts.vue'
 import Navbar from './components/Navbar.vue'
+
 </script>
 
 <style lang="scss" scoped>

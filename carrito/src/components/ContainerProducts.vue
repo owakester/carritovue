@@ -2,7 +2,7 @@
     <div class=" bg-gray-900   ">
 
 
-<CardProduct></CardProduct>
+<CardProduct v-if="store.activeProduct"></CardProduct>
    
 <div v-if="store.carrito.length!=0">
 
