@@ -1,13 +1,13 @@
 <template>
     <div class=" bg-gray-900   ">
 
-
-<CardProduct v-if="store.activeProduct"></CardProduct>
    
-<div v-if="store.carrito.length!=0">
+
+   
+<!-- <div v-if="store.carrito.length!=0">
 
     <CartShop></CartShop>
-</div>
+</div> -->
 
    
    <div v-if="store.stateLoad">
