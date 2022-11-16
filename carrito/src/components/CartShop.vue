@@ -76,6 +76,11 @@
           <h3 class="text-lg text-gray-700">
             Total a Pagar $ {{ store.addTotal }}
           </h3>
+          <button @click="router.push('/')"
+            class="text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:outline-none rounded px-4 py-2"
+          >
+            Volver
+          </button>
         </div>
       </div>
     </div>
@@ -85,6 +90,8 @@
 <script setup>
 import { ref, computed } from "vue";
 import { useProductStore } from "../stores/ProducStore";
+import { useRoute, useRouter } from "vue-router";
+const router = useRouter();
 const totalUnidad = ref(0);
 const store = useProductStore();
 </script>
