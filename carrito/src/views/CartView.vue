@@ -1,14 +1,11 @@
 <template>
-    <div>
-     
-<CartShop></CartShop>
-    </div>
+  <div>
+    <CartShop></CartShop>
+  </div>
 </template>
 
 <script setup>
-import CartShop from '../components/CartShop.vue';
+import CartShop from "../components/CartShop.vue";
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

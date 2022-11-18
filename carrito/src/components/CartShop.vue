@@ -32,11 +32,11 @@
                 <td>
                   <a href="#">
                     <p class="mb-2 md:ml-4">{{ product.producto }}</p>
-                    <form action="" method="POST">
-                      <button type="submit" class="text-gray-700 md:ml-4">
+                   
+                      <button @click="store.removeProduct(product)"  class="text-gray-700 bg-red-300  rounded p-2 md:ml-4">
                         <small>(Eliminar item)</small>
                       </button>
-                    </form>
+                   
                   </a>
                 </td>
                 <!--  <td class="justify-center md:justify-end md:flex mt-6">
