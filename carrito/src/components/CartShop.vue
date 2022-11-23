@@ -1,5 +1,9 @@
 <template>
   <div>
+
+
+
+
     <div class="flex justify-center my-6">
       <div
         class="flex flex-col w-full p-8 text-gray-800 bg-white shadow-lg pin-r pin-y md:w-4/5 lg:w-4/5"
@@ -16,9 +20,14 @@
                 </th>
                 <th class="hidden text-right md:table-cell">Precio Unitario</th>
                 <th class="text-right">Precio Total</th>
+          
+
+
               </tr>
+            
             </thead>
             <tbody>
+            
               <tr
                 class="divide-y"
                 v-for="product in store.carrito"
@@ -26,12 +35,12 @@
               >
                 <td class="hidden pb-4 md:table-cell">
                   <a href="#">
-                    <img class="h-48 w-auto" :src="product.url" />
+                    <img class="h-48 w-auto" :src="product.imagen" />
                   </a>
                 </td>
                 <td>
                   <a href="#">
-                    <p class="mb-2 md:ml-4">{{ product.producto }}</p>
+                    <p class="mb-2 md:ml-4">{{ product.nombre }}</p>
                    
                       <button @click="store.removeProduct(product)"  class="text-gray-700 bg-red-300  rounded p-2 md:ml-4">
                         <small>(Eliminar item)</small>
@@ -39,14 +48,8 @@
                    
                   </a>
                 </td>
-                <!--  <td class="justify-center md:justify-end md:flex mt-6">
-                  <div class="w-14 h-10">
-                    <div class="relative flex flex-row w-full h-8">
-                    
-                    </div>
-                  </div>
-                </td> -->
 
+          
                 <td class="text-right">
                   <div class="w-14 h-10">
                     <input
@@ -71,6 +74,11 @@
               </tr>
             </tbody>
           </table>
+          <div class=" text-orange-700 flex justify-center text-3xl text-center" v-if="store.carrito.length===0">
+             <img class="h-40 w-40 mt-12 " src="https://cdn-icons-png.flaticon.com/512/3220/3220742.png" alt=""> 
+            <span class="text-center text-lg text-gray-700">Tu cesta está vacía. ¡Sigue comprando para encontrar tu producto</span>
+               </div>
+              
 
           <hr class="pb-6 mt-6" />
           <h3 class="text-lg text-gray-700">
@@ -81,6 +89,11 @@
           >
             Volver
           </button>
+        
+          <a class="text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:outline-none rounded px-4 py-2 mx-2" :href="`https://api.whatsapp.com/send/?phone=1535888672&text=${'Su pedido es:'+linkMsn}`">Enviar</a>
+
+    <p>{{linkMsn}}</p>
+    <p>{{sendMsn}}</p>
         </div>
       </div>
     </div>
@@ -94,6 +107,18 @@ import { useRoute, useRouter } from "vue-router";
 const router = useRouter();
 const totalUnidad = ref(0);
 const store = useProductStore();
+
+
+
+const linkMsn = ref("");
+const sendMsn = computed(() => {
+  store.carrito.forEach((element) => {
+    console.log(element.producto)
+    linkMsn.value =`${linkMsn.value +  "✅"+element.nombre+"$"+element.precio}`
+    console.log(linkMsn.value);
+  });
+});
+
 </script>
 
 <style lang="scss" scoped></style>

@@ -1,9 +1,9 @@
 <template>
   <div class="container mx-auto">
     <div class="bg-gray-200 mx-auto w-96 rounded flex justify-center ...">
-      <span
-        v-for="categoria in categorias"
-        @click="store.filterProduct(categoria.nombre)"
+      <span 
+        v-for="categoria in store.categories"
+        @click="store.filterProduct(categoria.id)"
         class="cursor-pointer hover:bg-orange-700 text-orange-700 hover:text-gray-200 text-center divide-x text-xl p-2"
         :key="categoria.id"
       >
@@ -24,7 +24,7 @@
           <a href="#">
             <img
               class="rounded rounded-t-lg"
-              :src="product.url"
+              :src="product.imagen"
               alt="product image"
             />
           </a>
@@ -33,7 +33,7 @@
               <h5
                 class="text-xl mb-4 font-semibold tracking-tight text-orange-700 dark:text-white"
               >
-                {{ product.producto }}
+                {{ product.nombre }}
               </h5>
             </a>
             <div v-if="estado" class="flex items-center mt-2.5 mb-5">
@@ -77,6 +77,7 @@
               <!--             <button @click="descripcion(product)">Descripcion</button> -->
             </div>
           </div>
+    
         </div>
       </div>
     </div>

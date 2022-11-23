@@ -9,26 +9,37 @@ export const useProductStore = defineStore("product", () => {
   const activeModal = ref(false);
   const activeProduct = ref(true);
   const sumar = ref(null);
-
+  const categories = ref(null);
   const getProducts = async () => {
     try {
       const url =
         " https://script.google.com/macros/s/AKfycbyWvw9LrEg4Naj4a67pPCFgEp4GYNwFPZr39501zleqWQfcl-lRjMoflF8x9k6N2tRMkg/exec";
 
-      await fetch(url)
+      const categoriaApi =
+        "https://apipizzeriaremolo-production.up.railway.app/api/v1/categories";
+
+      const url2 =
+        "https://apipizzeriaremolo-production.up.railway.app/api/v1/products";
+
+      await fetch(url2)
         .then((response) => response.json())
         .then((data) => showInfo(data));
-      /* info.value=info.value.filter(item=>item.precio===1000)
-       */
+
+      await fetch(categoriaApi)
+        .then((response) => response.json())
+        .then((data) => (categories.value = data));
     } catch (error) {
       console.log(error);
     }
   };
 
   const showInfo = (data) => {
+    console.log(data);
     stateLoad.value = true;
-    info.value = data.data;
+    info.value = data;
     filtro.value = info.value;
+
+    
     stateLoad.value = false;
   };
 
@@ -67,7 +78,9 @@ export const useProductStore = defineStore("product", () => {
   };
 
   const filterProduct = (categoria) => {
-    filtro.value = info.value.filter((item) => item.categoria === categoria);
+    console.log(categoria);
+    console.log(info.value)
+    filtro.value = info.value.filter((item) => item.category_id === categoria);
   };
 
   return {
@@ -84,5 +97,6 @@ export const useProductStore = defineStore("product", () => {
     activeModal,
     activeProduct,
     removeProduct,
+    categories,
   };
 });
