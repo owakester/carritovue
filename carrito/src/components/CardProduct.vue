@@ -1,29 +1,29 @@
 <template>
   <div class="container mx-auto">
-    <div class="bg-gray-200 mx-auto w-96 rounded flex justify-center ...">
+    <div class="bg-stone-800 mx-auto w-5/12 mt-4   rounded flex justify-center ...">
       <span 
         v-for="categoria in store.categories"
         @click="store.filterProduct(categoria.id)"
-        class="cursor-pointer hover:bg-orange-700 text-orange-700 hover:text-gray-200 text-center divide-x text-xl p-2"
+        class="animate__animated animate__animated animate__wobble cursor-pointer hover:bg-orange-700 text-orange-700 hover:text-gray-200 text-center divide-x text-xl p-2"
         :key="categoria.id"
       >
         {{ categoria.nombre }}
         <img
-          class="h-12 flex items-center justify-center"
-          :src="categoria.imgCategoria"
+          class="h-20 flex items-center justify-center"
+          :src="categoria.imgcategoria"
           alt=""
         />
       </span>
     </div>
 
-    <div class="mt-12 ml-20 grid sm:grid-cols-1 md:grid-cols-3">
+    <div class="mt-12  grid sm:grid-cols-1 md:grid-cols-3  place-items-center">
       <div class="" v-for="(product, index) in store.filtro" :key="product.id">
         <div
-          class="w-full max-w-sm bg-white rounded-lg shadow-md dark:bg-gray-900 dark:border-gray-900"
+          class="w-full group/item hover:bg-orange-100 ... max-w-sm bg-stone-100 rounded-lg shadow-md dark:bg-gray-900 dark:border-gray-900"
         >
           <a href="#">
             <img
-              class="rounded rounded-t-lg"
+              class=" rounded-t-lg "
               :src="product.imagen"
               alt="product image"
             />
@@ -46,7 +46,7 @@
 
               <span
                 ><button
-                  @click="product.cantidad--"
+                @click="validar(product,'-')"
                   class="bg-gray-200 hover:bg-orange-300 text-orange-600 px-2.5 py-0.5 text-center text-lg rounded-full"
                 >
                   -
@@ -54,6 +54,7 @@
               >
               <span
                 ><input
+               
                   :disabled="product.cantidad === 0"
                   v-model="product.cantidad"
                   class="text-center text-gray-600 w-8"
@@ -61,7 +62,7 @@
               /></span>
               <span
                 ><button
-                  @click="product.cantidad++"
+                  @click="validar(product,'+')"
                   class="bg-gray-200 hover:bg-orange-300 text-orange-600 px-2.5 py-0.5 text-center text-lg rounded-full"
                 >
                   +
@@ -93,8 +94,19 @@ import ModalAddCart from "../components/ModalAddCart.vue";
 import { ref } from "vue";
 const estado = ref(false);
 
-const descripcion = () => {
-  return (estado.value = true);
+const validar = (producto,sumar) => {
+ console.log(producto,sumar)
+
+if (producto.cantidad===0) {
+  producto.cantidad=1
+  alert("Seleccione una cantidad valida")
+} else {
+  sumar=="+"? producto.cantidad ++ : producto.cantidad -- 
+}
+
+
+
+
 };
 const store = useProductStore();
 const categorias = [

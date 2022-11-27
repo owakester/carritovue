@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="bg-stone-900">
 
 
 
@@ -7,7 +7,7 @@
 
 </Navbar>
 <ContainerProducts></ContainerProducts>
-
+<Footer></Footer>
 
   </div>
 
@@ -17,6 +17,7 @@
 <script setup>
 import ContainerProducts from './components/ContainerProducts.vue'
 import Navbar from './components/Navbar.vue'
+import Footer from './components/Footer.vue';
 import {RouterLink,RouterView} from 'vue-router'
 </script>
 

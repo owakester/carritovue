@@ -34,7 +34,6 @@ export const useProductStore = defineStore("product", () => {
   };
 
   const showInfo = (data) => {
-    console.log(data);
     stateLoad.value = true;
     info.value = data;
     filtro.value = info.value;
@@ -72,7 +71,10 @@ export const useProductStore = defineStore("product", () => {
   };
 
   const removeProduct = (prod) => {
+    console.log(prod.cantidad)
+    prod.cantidad=1
     const eliminar = ref(null);
+  
     carrito.value = carrito.value.filter((item) => item.id != prod.id);
     console.log(eliminar.value);
   };

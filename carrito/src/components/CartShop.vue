@@ -90,7 +90,7 @@
             Volver
           </button>
         
-          <a class="text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:outline-none rounded px-4 py-2 mx-2" :href="`https://api.whatsapp.com/send/?phone=1535888672&text=${'Su pedido es:'+linkMsn}`">Enviar</a>
+          <a class="text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:outline-none rounded px-4 py-2 mx-2" :href="`https://api.whatsapp.com/send/?phone=541535888672&text=${'Su pedido es:'+linkMsn}`">Enviar</a>
 
     <p>{{linkMsn}}</p>
     <p>{{sendMsn}}</p>
@@ -113,9 +113,8 @@ const store = useProductStore();
 const linkMsn = ref("");
 const sendMsn = computed(() => {
   store.carrito.forEach((element) => {
-    console.log(element.producto)
     linkMsn.value =`${linkMsn.value +  "✅"+element.nombre+"$"+element.precio}`
-    console.log(linkMsn.value);
+
   });
 });
 
