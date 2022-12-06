@@ -38,7 +38,6 @@ export const useProductStore = defineStore("product", () => {
     info.value = data;
     filtro.value = info.value;
 
-    
     stateLoad.value = false;
   };
 
@@ -71,17 +70,17 @@ export const useProductStore = defineStore("product", () => {
   };
 
   const removeProduct = (prod) => {
-    console.log(prod.cantidad)
-    prod.cantidad=1
+    console.log(prod.cantidad);
+    prod.cantidad = 1;
     const eliminar = ref(null);
-  
+
     carrito.value = carrito.value.filter((item) => item.id != prod.id);
     console.log(eliminar.value);
   };
 
   const filterProduct = (categoria) => {
     console.log(categoria);
-    console.log(info.value)
+    console.log(info.value);
     filtro.value = info.value.filter((item) => item.category_id === categoria);
   };
 

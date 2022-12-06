@@ -57,7 +57,7 @@
                
                   :disabled="product.cantidad === 0"
                   v-model="product.cantidad"
-                  class="text-center text-gray-600 w-8"
+                  class="text-center rounded-md bg-orange-300 text-gray-600 w-8"
                   type="text"
               /></span>
               <span
@@ -95,6 +95,7 @@ import { ref } from "vue";
 const estado = ref(false);
 
 const validar = (producto,sumar) => {
+
  console.log(producto,sumar)
 
 if (producto.cantidad===0) {

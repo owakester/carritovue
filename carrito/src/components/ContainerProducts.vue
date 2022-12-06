@@ -6,8 +6,6 @@
 </div> -->
 
 
-<CheckOut></CheckOut>
-
     <div v-if="store.stateLoad">
 
 
@@ -19,7 +17,7 @@
 
 <script setup>
 import CardProduct from "./CardProduct.vue";
-import CheckOut from "./CheckOut.vue";
+
 import CartShop from "./CartShop.vue";
 import Loading from "./Loading.vue";
 import { useProductStore } from "../stores/ProducStore";

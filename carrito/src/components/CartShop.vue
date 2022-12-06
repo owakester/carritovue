@@ -1,9 +1,5 @@
 <template>
   <div>
-
-
-
-
     <div class="flex justify-center my-6">
       <div
         class="flex flex-col w-full p-8 text-gray-800 bg-white shadow-lg pin-r pin-y md:w-4/5 lg:w-4/5"
@@ -20,14 +16,9 @@
                 </th>
                 <th class="hidden text-right md:table-cell">Precio Unitario</th>
                 <th class="text-right">Precio Total</th>
-          
-
-
               </tr>
-            
             </thead>
             <tbody>
-            
               <tr
                 class="divide-y"
                 v-for="product in store.carrito"
@@ -41,15 +32,16 @@
                 <td>
                   <a href="#">
                     <p class="mb-2 md:ml-4">{{ product.nombre }}</p>
-                   
-                      <button @click="store.removeProduct(product)"  class="text-gray-700 bg-red-300  rounded p-2 md:ml-4">
-                        <small>(Eliminar item)</small>
-                      </button>
-                   
+
+                    <button
+                      @click="store.removeProduct(product)"
+                      class="text-gray-700 bg-red-300 rounded p-2 md:ml-4"
+                    >
+                      <small>(Eliminar item)</small>
+                    </button>
                   </a>
                 </td>
 
-          
                 <td class="text-right">
                   <div class="w-14 h-10">
                     <input
@@ -74,28 +66,46 @@
               </tr>
             </tbody>
           </table>
-          <div class=" text-orange-700 flex justify-center text-3xl text-center" v-if="store.carrito.length===0">
-             <img class="h-40 w-40 mt-12 " src="https://cdn-icons-png.flaticon.com/512/3220/3220742.png" alt=""> 
-            <span class="text-center text-lg text-gray-700">Tu cesta está vacía. ¡Sigue comprando para encontrar tu producto</span>
-               </div>
-              
+          <div
+            class="text-orange-700 flex justify-center text-3xl text-center"
+            v-if="store.carrito.length === 0"
+          >
+            <img
+              class="h-40 w-40 mt-12"
+              src="https://cdn-icons-png.flaticon.com/512/3220/3220742.png"
+              alt=""
+            />
+            <span class="text-center text-lg text-gray-700"
+              >Tu cesta está vacía. ¡Sigue comprando para encontrar tu
+              producto</span
+            >
+          </div>
 
-          <hr class="pb-6 mt-6" />
           <h3 class="text-lg text-gray-700">
-            Total a Pagar $ {{ store.addTotal }}
+            Total a Pagar $
+            <span class="text-orange-600 font-bold text-md">{{
+              store.addTotal
+            }}</span>
           </h3>
-          <button @click="router.push('/')"
+          <hr class="pb-6 mt-6" />
+          <button
+            @click="router.push('/')"
             class="text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:outline-none rounded px-4 py-2"
           >
             Volver
           </button>
-        
-          <a class="text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:outline-none rounded px-4 py-2 mx-2" :href="`https://api.whatsapp.com/send/?phone=541535888672&text=${'Su pedido es:'+linkMsn}`">Enviar</a>
+          <button
+            @click="(resumen=true)"
+            class="mx-2 text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:outline-none rounded px-4 py-2"
+          >
+            Pagar
+          </button>
 
-    <p>{{linkMsn}}</p>
-    <p>{{sendMsn}}</p>
+          <!--    <p>{{sendMsn}}</p> -->
         </div>
       </div>
+
+      <div class="mx-2" v-if="(resumen===true)"><CheckOut></CheckOut></div>
     </div>
   </div>
 </template>
@@ -104,20 +114,19 @@
 import { ref, computed } from "vue";
 import { useProductStore } from "../stores/ProducStore";
 import { useRoute, useRouter } from "vue-router";
+import CheckOut from "./CheckOut.vue";
 const router = useRouter();
 const totalUnidad = ref(0);
+const resumen=ref(false)
 const store = useProductStore();
 
-
-
 const linkMsn = ref("");
-const sendMsn = computed(() => {
+/* const sendMsn = computed(() => {
   store.carrito.forEach((element) => {
     linkMsn.value =`${linkMsn.value +  "✅"+element.nombre+"$"+element.precio}`
 
   });
-});
-
+}); */
 </script>
 
 <style lang="scss" scoped></style>

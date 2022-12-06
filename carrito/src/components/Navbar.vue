@@ -1,6 +1,6 @@
 <template>
     <div>
-
+   
         <nav class="bg-stone-900 border-gray-200 px-2 sm:px-4 py-2.5  dark:bg-stone-900">
   <div class="container flex flex-wrap justify-between items-center mx-auto">
     <a href="" class="flex items-center">
