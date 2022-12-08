@@ -99,9 +99,10 @@ const validar = (producto,sumar) => {
  console.log(producto,sumar)
 
 if (producto.cantidad===0) {
-  producto.cantidad=1
+ /*  producto.cantidad=1 */
   alert("Seleccione una cantidad valida")
 } else {
+
   sumar=="+"? producto.cantidad ++ : producto.cantidad -- 
 }
 
